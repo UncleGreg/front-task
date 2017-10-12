@@ -6,7 +6,6 @@ document.addEventListener('DOMContentLoaded', () => {
 var $ = require('jquery');
 
 $(document).ready(function() {
-	//feed to parse
 	var feed = "https://www.vg.no/rss/feed/forsiden/?frontId=1";
 
 	$.ajax(feed, {
@@ -22,7 +21,7 @@ $(document).ready(function() {
 				var link = el.find("link").text()
 				var date = el.find("pubDate").text()
 
-				$( "#rss-feeds" ).append("<a class='feed-list__item' href='" + link + "' target='_blank'>" + "<div class='feed-list__date'>" + date + "</div>" + "<div class='feed-list__title'>" + title + "</div>" + "</a>");
+				$( "#js-rss-feeds" ).append("<a class='feed-list__item' href='" + link + "' target='_blank'>" + "<div class='feed-list__date'>" + date + "</div>" + "<div class='feed-list__title'>" + title + "</div>" + "</a>");
 			});
 
 
@@ -30,3 +29,15 @@ $(document).ready(function() {
 	});
 
 });
+$.get('varnish.log', function(data) {
+  var lines = data.trim().split("\n")
+  .map(function(line){
+    return line.split(/["]/gi)
+    .map(function(element){
+        return element.trim().replace(/["\[\]]/gi,'');
+        });
+  });
+	for(var i = 0 ; i < lines.length ; i++){
+		$('#js-log').append("<li>" + lines[i][3]  + "</li>")
+	}
+}, 'text');
