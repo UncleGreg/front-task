@@ -1,8 +1,8 @@
 {
-  "name": "brunch-app",
-  "description": "Brunch.io application",
+  "name": "front-task",
+  "description": "task",
   "private": true,
-  "author": "Brunch",
+  "author": "GW",
   "version": "0.0.1",
   "repository": "",
   "scripts": {
@@ -14,10 +14,14 @@
   },
   "devDependencies": {
     "auto-reload-brunch": "^2",
+    "autoprefixer": "^7.1.5",
     "babel-brunch": "~6.0",
     "babel-preset-latest": "^6",
     "brunch": "^2",
     "clean-css-brunch": "^2",
+    "csswring": "^6.0.1",
+    "postcss-brunch": "^2.1.0",
+    "sass-brunch": "^2.10.4",
     "uglify-js-brunch": "^2"
   }
 }

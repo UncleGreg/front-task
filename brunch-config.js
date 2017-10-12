@@ -10,5 +10,14 @@ exports.files = {
 };
 
 exports.plugins = {
-  babel: {presets: ['latest']}
+  babel: {presets: ['latest']},
+  sass: {
+    mode: "native"
+  },
+  postcss: {
+    processors: [
+      require('autoprefixer')(['last 8 versions']),
+      require('csswring')()
+    ]
+  }
 };
