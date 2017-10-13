@@ -9,6 +9,21 @@
   <script>require('initialize');</script>
 </head>
 <body>
-  <div id="js-rss-feeds" class="feed-list"></div>
-  <div id="js-log">hello</div>
+
+	<div class="container">
+		<ul class="tabs">
+			<li class="tab-link current" data-tab="tab-1">Tab One</li>
+			<li class="tab-link" data-tab="tab-2">Tab Two</li>
+		</ul>
+
+		<div id="tab-1" class="tab-content current">
+			<div id="js-rss-feeds" class="feed-list"></div>
+		</div>
+		<div id="tab-2" class="tab-content">
+			<div id="js-log">hello</div>
+		</div>
+
+	</div>
+
+
 </body>

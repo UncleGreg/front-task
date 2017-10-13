@@ -5,6 +5,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
 var $ = require('jquery');
 
+
+// light tabs
+
+$(document).ready(function(){
+  
+  $('ul.tabs li').click(function(){
+    var tab_id = $(this).attr('data-tab');
+
+    $('ul.tabs li').removeClass('current');
+    $('.tab-content').removeClass('current');
+
+    $(this).addClass('current');
+    $("#"+tab_id).addClass('current');
+  })
+
+});
+
 $(document).ready(function() {
 	var feed = "https://www.vg.no/rss/feed/forsiden/?frontId=1";
 
