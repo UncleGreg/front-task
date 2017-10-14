@@ -76,15 +76,21 @@ $.get('varnish.log', function(data) {
   });
   
 	var hosts = new Array();
+	var files = new Array();
 
 	for(var i = 0 ; i < lines.length ; i++){
 
     var host = lines[i][3];
-    var parts = host.split('/');
-    var hostname = parts[2];
+    var file = lines[i][1];
 
-    hosts.push(hostname)
+    var hostParts = host.split('/');
+    var fileParts = file.split(' ');
 
+    var hostname = hostParts[2];
+    var file = fileParts[1];
+
+    hosts.push(hostname);
+    files.push(file);
 
 	}
 
@@ -106,9 +112,41 @@ $.get('varnish.log', function(data) {
   });
 
 
-  for(var i = 0 ; i < arr.length ; i++){
-    $('#js-log').append("<li>" + i + "  " + arr[i][0] +"  "+ arr[i][1]  + "</li>")
+
+  var obj2 = { };
+
+  for (var i = 0, j = files.length; i < j; i++) {
+    if (obj2[files[i]]) {
+      obj2[files[i]]++;
+    }
+    else {
+      obj2[files[i]] = 1;
+    } 
   }
+
+  let arr2 = Object.entries(obj2);
+
+  arr2.sort(function(a,b){
+    return a[1] < b[1] ? 1 : -1;
+  });
+
+
+  for(var i = 0 ; i < 5 ; i++){
+    $('#js-log-hostnames').append("<li>" + "  " + arr[i][0] +"  "+ arr[i][1]  + "</li>")
+    $('#js-log-files').append("<li>" + "  " + arr2[i][0] +"  "+ arr2[i][1]  + "</li>")
+  }
+
+		$('#sort2').click(function() {
+			var list = $('#js-log-hostnames');
+			var listItems = list.children('li');
+			list.append(listItems.get().reverse());
+		});
+
+		$('#sort3').click(function() {
+			var list = $('#js-log-files');
+			var listItems = list.children('li');
+			list.append(listItems.get().reverse());
+		});
 
 }, 'text');
 
