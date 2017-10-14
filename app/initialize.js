@@ -50,7 +50,6 @@ $('.js-error').css('display', 'none')
       return new Date(b.pubDate) - new Date(a.pubDate);
     });
     
-      $( ".feed-list__item" ).remove();
       for(var i = 0 ; i < rssFeed.length ; i++){
         $( "#js-rss-feeds" ).append("<li class='feed-list__item'><a href='" + rssFeed[i].link + "' target='_blank'>" + "<div class='feed-list__date'>" + rssFeed[i].pubDate + "</div>" + "<div class='feed-list__title'>" + rssFeed[i].title + "</div>" + "</a></li>");
       };
@@ -75,9 +74,42 @@ $.get('varnish.log', function(data) {
         return element.trim().replace(/["\[\]]/gi,'');
         });
   });
+  
+	var hosts = new Array();
+
 	for(var i = 0 ; i < lines.length ; i++){
-		$('#js-log').append("<li>" + lines[i][3]  + "</li>")
+
+    var host = lines[i][3];
+    var parts = host.split('/');
+    var hostname = parts[2];
+
+    hosts.push(hostname)
+
+
 	}
+
+  var obj = { };
+
+  for (var i = 0, j = hosts.length; i < j; i++) {
+    if (obj[hosts[i]]) {
+      obj[hosts[i]]++;
+    }
+    else {
+      obj[hosts[i]] = 1;
+    } 
+  }
+
+  let arr = Object.entries(obj);
+
+  arr.sort(function(a,b){
+    return a[1] < b[1] ? 1 : -1;
+  });
+
+
+  for(var i = 0 ; i < arr.length ; i++){
+    $('#js-log').append("<li>" + i + "  " + arr[i][0] +"  "+ arr[i][1]  + "</li>")
+  }
+
 }, 'text');
 
 
