@@ -11,7 +11,7 @@
   <script>require('initialize');</script>
 </head>
 <body>
-
+<h1 class="page-title">Programming Task</h1>
   <div class="container">
     <ul class="tabs">
       <li class="tab-link current" data-tab="tab-1">Varnish log</li>
@@ -23,14 +23,14 @@
       <div class="log-wrap">
         <div class="log-list">
           <h2>
-            hostnames
+            Most busy hostnames
             <button id="sort2">Sort!</button>
           </h2>
           <ul id="js-log-hostnames"></ul>
         </div>
         <div class="log-list">
           <h2>
-            files
+            Most requested files
             <button id="sort3">Sort!</button>
           </h2>
           <ul id="js-log-files"></ul>
@@ -39,7 +39,11 @@
     </div>
     <div id="tab-2" class="tab-content">
       <p class="js-error">Something went wrong, check if you have javascript enabled on your browser</p>
-      <h2 class="content__title">RSS Feed
+      <h2 class="content__title">
+        <div>
+          RSS Feed
+          <span id="js-rss-url"></span>
+        </div>
         <button id="sort">Sort!</button>
       </h2>
       <ul id="js-rss-feeds" class="feed-list">

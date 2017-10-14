@@ -28,6 +28,7 @@ $('.js-error').css('display', 'none')
 // RSS feed
 	
 	var rssurl = "https://www.vg.no/rss/feed/forsiden/?frontId=1";
+  $('#js-rss-url').append("URL: " + rssurl);
 
 	var rssFeed = new Array();
 
@@ -51,7 +52,7 @@ $('.js-error').css('display', 'none')
     });
     
       for(var i = 0 ; i < rssFeed.length ; i++){
-        $( "#js-rss-feeds" ).append("<li class='feed-list__item'><a href='" + rssFeed[i].link + "' target='_blank'>" + "<div class='feed-list__date'>" + rssFeed[i].pubDate + "</div>" + "<div class='feed-list__title'>" + rssFeed[i].title + "</div>" + "</a></li>");
+        $( "#js-rss-feeds" ).append("<li class='feed-list__item'><a href='" + rssFeed[i].link + "' target='_blank'>" + "<div class='feed-list__title'>" + rssFeed[i].title + "</div>"  + "<div class='feed-list__date'>" +"<span>added</span>"  + rssFeed[i].pubDate + "</div></a></li>");
       };
 
 

@@ -2,6 +2,16 @@ body
   font-family: 'Quicksand', sans-serif
   background-color: #eaebed
 
+.page-title
+  text-align: center
+  margin: 0
+  color: #7381A4
+  font-size: .8em
+  letter-spacing 1px
+  padding: .5em 0
+  text-transform: uppercase
+  background-color: #283257
+
 //============== TABS =================
 
 .container
@@ -13,8 +23,8 @@ body
   padding: 0 15%
   font-size: 1.4em
   display: flex
-  box-shadow: 0 11px 13px -9px #BFC1C3
   background-image: linear-gradient(to right, #1A1127 0%, #102048 100%);
+  box-shadow: 0 4px 12px 1px #424354
 
 .tabs li
   flex: 1
@@ -26,6 +36,11 @@ body
   transition: .2s
   color: #fff
   text-align: center
+  overflow: hidden
+  &:before
+    content: ""
+    display: block
+    
   &:after
     content: ""
     display: block
@@ -37,6 +52,7 @@ body
     bottom: 0
     transition: .4s
     background-image: radial-gradient(circle 248px at center, #16d9e3 0%, #30c7ec 47%, #46aef7 100%);
+    box-shadow: 0 -2px 27px 3px #0d459b
 
   
 
@@ -45,6 +61,18 @@ body
   &:after
     width: 100%
 
+
+.content__title
+  display: flex
+  justify-content: space-between
+  div
+    display: flex
+    flex-direction: column
+    span
+      font-size: .7em
+      opacity: .3
+      padding-top: 5px
+    
 
 .tab-content
   display: none
@@ -63,6 +91,7 @@ body
 
 .feed-list
   padding: 0
+  counter-reset: counter
   &__item
     list-style: none
     margin-bottom: 10px
@@ -72,26 +101,45 @@ body
     cursor: pointer
     overflow: hidden
     position: relative
-    &:after
-      content: "Read"
-      display: inline-block
-      padding: 2em
-      color: #fff
-      font-weight: 700
-      background-color: #102048
+    &:before
+      content: "0"counter(counter)
+      counter-increment: counter
+      display: block
+      letter-spacing: -2px
       position: absolute
-      right: -200px
       top: 50%
       transform: translateY(-50%)
+      width: 50px
+      text-align: center
+      font-weight: 600
+      color: #7381A4
+    &:nth-child(n+10):before
+      content: counter(counter)
+      letter-spacing: 0
+    &:after
+      content: "Read article"
+      text-transform: uppercase
+      display: inline-block
+      padding: 2em
+      color: #0d459b
+      font-weight: 700
+      position: absolute
+      right: 0 
+      top: 50px
       transition: .4s
       pointer-events: none
+      opacity: 0
     a
       display: block
-      padding: .8em 1.2em
+      padding: .8em 1.2em .8em 4em
       color: #222
       text-decoration: none
+      span
+        padding-right: .5em
     &:hover:after
-      right: 0
+      opacity: 1
+      top: 50%
+      transform: translateY(-50%)
       
   &__title
     font-weight: 600
@@ -102,6 +150,7 @@ body
 .log
   &-wrap
     display: flex
+    flex-direction: column
   &-list
     flex: 1
     margin: 10px
