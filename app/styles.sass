@@ -1,44 +1,124 @@
 body
-	margin-top: 100px;
-	font-family: 'Trebuchet MS', serif;
-	line-height: 1.6
+  font-family: 'Quicksand', sans-serif
+  background-color: #eaebed
+
+//============== TABS =================
 
 .container
-	width: 800px;
-	margin: 0 auto;
+  width: 100%
+  min-height: 100vh
 
-ul.tabs
-	margin: 0px;
-	padding: 0px;
-	list-style: none;
+.tabs
+  margin: 0
+  padding: 0 15%
+  font-size: 1.4em
+  display: flex
+  box-shadow: 0 11px 13px -9px #BFC1C3
+  background-image: linear-gradient(to right, #1A1127 0%, #102048 100%);
 
-ul.tabs li
-	background: none;
-	color: #222;
-	display: inline-block;
-	padding: 10px 15px;
-	cursor: pointer;
+.tabs li
+  flex: 1
+  background: none
+  display: inline-block
+  padding: 1em 0
+  cursor: pointer
+  position: relative
+  transition: .2s
+  color: #fff
+  text-align: center
+  &:after
+    content: ""
+    display: block
+    height: 3px
+    width: 0
+    position: absolute
+    left: 50%
+    transform: translateX(-50%)
+    bottom: 0
+    transition: .4s
+    background-image: radial-gradient(circle 248px at center, #16d9e3 0%, #30c7ec 47%, #46aef7 100%);
+
+  
 
 
-ul.tabs li.current
-	background: #ededed;
-	color: #222;
+.tabs li.current
+  &:after
+    width: 100%
 
 
 .tab-content
-	display: none;
-	background: #ededed;
-	padding: 15px;
+  display: none
+  padding: 1em 15%
+  
 
 
 .tab-content.current
-	display: inherit;
-	
+  display: inherit
 
 
-.feed-list__item
-  border: 1px solid #444b54
-  list-style: none
-  margin-bottom: 10px
-  
-  
+
+//============ RSS Feed ===========
+
+
+
+.feed-list
+  padding: 0
+  &__item
+    list-style: none
+    margin-bottom: 10px
+    background-color: #fff
+    border-radius: 3px
+    transition: .2s
+    cursor: pointer
+    overflow: hidden
+    position: relative
+    &:after
+      content: "Read"
+      display: inline-block
+      padding: 2em
+      color: #fff
+      font-weight: 700
+      background-color: #102048
+      position: absolute
+      right: -200px
+      top: 50%
+      transform: translateY(-50%)
+      transition: .4s
+      pointer-events: none
+    a
+      display: block
+      padding: .8em 1.2em
+      color: #222
+      text-decoration: none
+    &:hover:after
+      right: 0
+      
+  &__title
+    font-weight: 600
+
+
+//============= LOGS =========
+
+.log
+  &-wrap
+    display: flex
+  &-list
+    flex: 1
+    margin: 10px
+
+    ul
+      padding: 0
+    li
+      list-style: none
+      list-style: none
+      margin-bottom: 10px
+      background-color: #fff
+      border-radius: 3px
+      transition: .2s
+      cursor: pointer
+      overflow: hidden
+      position: relative
+      padding: .8em 1.2em
+      color: #222
+      text-decoration: none
+

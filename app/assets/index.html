@@ -3,6 +3,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
   <title>Front Task</title>
+  <link href="https://fonts.googleapis.com/css?family=Nunito:300,400,600,700" rel="stylesheet"> 
+  <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet"> 
   <link rel="stylesheet" href="/app.css">
   <script src="/vendor.js"></script>
   <script src="/app.js"></script>
@@ -12,33 +14,40 @@
 
   <div class="container">
     <ul class="tabs">
-      <li class="tab-link current" data-tab="tab-1">Tab One</li>
-      <li class="tab-link" data-tab="tab-2">Tab Two</li>
+      <li class="tab-link current" data-tab="tab-1">Varnish log</li>
+      <li class="tab-link" data-tab="tab-2">RSS Feed</li>
     </ul>
 
     <div id="tab-1" class="tab-content current">
-        <p class="js-error">Something went wrong, check if you have javascript enabled on your browser</p>
-        <button id="sort2">Sort!</button>
-      <div id="js-log-hostnames">
-        hostnames
-      </div>
-      <br>
-      
-        <button id="sort3">Sort!</button>
-      <div id="js-log-files">
-        files
+      <p class="js-error">Something went wrong, check if you have javascript enabled on your browser</p>
+      <div class="log-wrap">
+        <div class="log-list">
+          <h2>
+            hostnames
+            <button id="sort2">Sort!</button>
+          </h2>
+          <ul id="js-log-hostnames"></ul>
+        </div>
+        <div class="log-list">
+          <h2>
+            files
+            <button id="sort3">Sort!</button>
+          </h2>
+          <ul id="js-log-files"></ul>
+        </div>
       </div>
     </div>
     <div id="tab-2" class="tab-content">
-        <p class="js-error">Something went wrong, check if you have javascript enabled on your browser</p>
-      <div class="feed-list">
+      <p class="js-error">Something went wrong, check if you have javascript enabled on your browser</p>
+      <h2 class="content__title">RSS Feed
         <button id="sort">Sort!</button>
-          <ul id="js-rss-feeds">
-          </ul>
-      </div>
+      </h2>
+      <ul id="js-rss-feeds" class="feed-list">
+      </ul>
     </div>
 
   </div>
+</div>
 
 
 </body>
