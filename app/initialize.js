@@ -3,13 +3,18 @@ document.addEventListener('DOMContentLoaded', () => {
   console.log('Initialized app');
 });
 
+
 var $ = require('jquery');
 
 
-// light tabs
+
 
 $(document).ready(function(){
+
+// display when js is off
+$('.js-error').css('display', 'none')
   
+// light tabs
   $('ul.tabs li').click(function(){
     var tab_id = $(this).attr('data-tab');
 
@@ -20,30 +25,46 @@ $(document).ready(function(){
     $("#"+tab_id).addClass('current');
   })
 
-});
+// RSS feed
+	
+	var rssurl = "https://www.vg.no/rss/feed/forsiden/?frontId=1";
 
-$(document).ready(function() {
-	var feed = "https://www.vg.no/rss/feed/forsiden/?frontId=1";
+	var rssFeed = new Array();
 
-	$.ajax(feed, {
-		accepts:{
-			xml:"application/rss+xml"
-		},
-		dataType:"xml",
-		success:function(data) {
-
-			$(data).find("item").each(function () {
-				var el = $(this);
-				var title = el.find("title").text()
-				var link = el.find("link").text()
-				var date = el.find("pubDate").text()
-
-				$( "#js-rss-feeds" ).append("<a class='feed-list__item' href='" + link + "' target='_blank'>" + "<div class='feed-list__date'>" + date + "</div>" + "<div class='feed-list__title'>" + title + "</div>" + "</a>");
-			});
+	$.get(rssurl, function(data) {
+		var $xml = $(data);
+		$xml.find("item").each(function() {
+			var $this = $(this),
+				item = {
+					title: $this.find("title").text(),
+					link: $this.find("link").text(),
+					pubDate: $this.find("pubDate").text(),
+				}
 
 
-		}   
+			rssFeed.push(item);
+		});
+
+
+    rssFeed.sort(function(a,b){
+      return new Date(b.pubDate) - new Date(a.pubDate);
+    });
+    
+      $( ".feed-list__item" ).remove();
+      for(var i = 0 ; i < rssFeed.length ; i++){
+        $( "#js-rss-feeds" ).append("<li class='feed-list__item'><a href='" + rssFeed[i].link + "' target='_blank'>" + "<div class='feed-list__date'>" + rssFeed[i].pubDate + "</div>" + "<div class='feed-list__title'>" + rssFeed[i].title + "</div>" + "</a></li>");
+      };
+
+
+		$('#sort').click(function() {
+			var list = $('#js-rss-feeds');
+			var listItems = list.children('li');
+			list.append(listItems.get().reverse());
+		});
+
+    
 	});
+
 
 });
 $.get('varnish.log', function(data) {
@@ -58,3 +79,5 @@ $.get('varnish.log', function(data) {
 		$('#js-log').append("<li>" + lines[i][3]  + "</li>")
 	}
 }, 'text');
+
+
