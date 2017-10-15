@@ -29,6 +29,7 @@ body
   background-image: linear-gradient(to right, #1A1127 0%, #102048 100%);
   box-shadow: 0 4px 12px 1px #424354
 
+
 .tabs li
   flex: 1
   background: none
@@ -108,7 +109,7 @@ body
   flex-direction: column
   div
     display: flex
-  span
+  .content__subtitle
     font-size: .7em
     opacity: .3
     padding-top: 5px
@@ -252,6 +253,7 @@ body
       opacity: .1
       text-shadow: 0 0 6px rgba(0,0,0,0.4)
       z-index: 2
+
     a
       display: flex
       flex-direction: column
@@ -270,7 +272,7 @@ body
         position: absolute
         top: 0
         right: 0
-        opacity: .7
+        opacity: .3
       
       &:after
         content: ""
@@ -313,16 +315,6 @@ body
           opacity: .7
         &:before
           width: 100%
-      &:after
-        content: ""
-        height: 300px
-        z-index: 3
-        width: 100%
-        display: block
-        position: absolute
-        bottom: 0
-        left: 0
-        background-image: linear-gradient(0deg, rgba(255,255,255,.7) 0%, transparent 100%);
       .feed-list__title
         font-weight: 600
         position: absolute
@@ -374,21 +366,59 @@ body
   &-list
     flex: 1
     margin: 10px
-
     ul
       padding: 0
     li
-      list-style: none
       list-style: none
       margin-bottom: 10px
       background-color: #fff
       border-radius: 3px
       transition: .2s
-      cursor: pointer
       overflow: hidden
       position: relative
       padding: .8em 1.2em
       color: #222
       text-decoration: none
+
+
+.hostnames-list
+  &__host
+    height: 80px
+    line-height: 80px
+    font-size: 1.3em
+    font-weight: 600
+    color: #2E3048
+  &__data
+    display: flex
+    justify-content: space-between
+  &__percent
+    font-size: 3em
+    color: #00F7E3
+    font-weight: 300
+  &__numbers
+    text-align: center
+    font-weight: 700
+    color: #444b54
+    width: 130px
+    span
+      padding: 0 5px
+      font-weight: 700
+      font-size: .8em
+      color: #151939
+  li
+    display: flex
+    flex-direction: column
+    .percent-bar
+      background-image: radial-gradient(circle 248px at center, #16d9e3 0%, #30c7ec 47%, #46aef7 100%);
+      display: block
+      height: 2px
+      transition: 2s
+
+
+.file-icon
+  height: 24px
+  position: relative
+  top: 3px
+
 
 

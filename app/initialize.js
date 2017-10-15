@@ -89,6 +89,8 @@ $.get('varnish.log', function(data) {
         });
   });
   
+
+
 	var hosts = new Array();
 	var files = new Array();
 
@@ -125,6 +127,7 @@ $.get('varnish.log', function(data) {
     return a[1] < b[1] ? 1 : -1;
   });
 
+  $('#js-hostname-count').append(arr.length)
 
 
   var obj2 = { };
@@ -144,10 +147,17 @@ $.get('varnish.log', function(data) {
     return a[1] < b[1] ? 1 : -1;
   });
 
+  $('#js-files-count').append(arr2.length)
+
+  
 
   for(var i = 0 ; i < 5 ; i++){
-    $('#js-log-hostnames').append("<li><img src='http://www.google.com/s2/favicons?domain_url=http%3A%2F%2F" + arr[i][0] + "%2F' alt='favicon'>" + "  " + arr[i][0] +"  "+ arr[i][1]  + "</li>")
-    $('#js-log-files').append("<li>" + "  " + arr2[i][0] +"  "+ arr2[i][1]  + "</li>")
+
+    var percent = (arr[i][1]/lines.length * 100).toFixed(1);
+    var barWidth = "calc(100%/100 *"+ percent+ ")";
+
+    $('#js-log-hostnames').append("<li><div class='hostnames-list__data'><div class='hostnames-list__host'><img src='http://www.google.com/s2/favicons?domain_url=http%3A%2F%2F" + arr[i][0] + "%2F' alt='favicon'>" + "  " + arr[i][0] +"</div><div class='hostnames-list__numbers'><div class='hostnames-list__percent'>" + percent  + "%</div><div>" + arr[i][1] +"<span>/</span>" + lines.length + "</div></div></div><div class='percent-bar' style='width:" + barWidth + "'></div></li>")
+    $('#js-log-files').append("<li><div class='hostnames-list__data'><div class='hostnames-list__host'><img class='file-icon' src='file.svg' alt='file icon'>" + "  " + arr2[i][0] +"</div><div class='hostnames-list__numbers'><div class='hostnames-list__percent'>" + percent  + "%</div><div>" + arr2[i][1] +"<span>/</span>" + lines.length + "</div></div></div><div class='percent-bar' style='width:" + barWidth + "'></div></li>")
   }
 
 		$('#sort2').click(function() {
