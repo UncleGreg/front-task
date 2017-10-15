@@ -6,10 +6,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
 var $ = require('jquery');
 
-
-
-
 $(document).ready(function(){
+
 
 // display when js is off
 $('.js-error').css('display', 'none')
@@ -40,8 +38,18 @@ $('.js-error').css('display', 'none')
 					title: $this.find("title").text(),
 					link: $this.find("link").text(),
 					pubDate: $this.find("pubDate").text(),
+					imgRegular: $this.find("imgRegular").text(),
+					image: $this.find("image").text(),
 				}
+      if(item.imgRegular == ""){
+        item.imgRegular = "default-img.gif";
+      }
 
+			var date = item.pubDate;
+			var dateParts = date.split('+');
+			var pubDate = dateParts[0].slice(0,-9);
+
+			item.pubDate = pubDate;
 
 			rssFeed.push(item);
 		});
@@ -52,7 +60,7 @@ $('.js-error').css('display', 'none')
     });
     
       for(var i = 0 ; i < rssFeed.length ; i++){
-        $( "#js-rss-feeds" ).append("<li class='feed-list__item'><a href='" + rssFeed[i].link + "' target='_blank'>" + "<div class='feed-list__title'>" + rssFeed[i].title + "</div>"  + "<div class='feed-list__date'>" +"<span>added</span>"  + rssFeed[i].pubDate + "</div></a></li>");
+        $( "#js-rss-feeds" ).append("<li class='feed-list__item'><a href='" + rssFeed[i].link + "' target='_blank' style='background-image: url(" + rssFeed[i].image + ")'><div class='feed-list__title'><span>Title:</span>" + rssFeed[i].title + "</div>"  + "<div class='feed-list__date'>" + rssFeed[i].pubDate + "</div></a></li>");
       };
 
 
