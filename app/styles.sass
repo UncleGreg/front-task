@@ -21,22 +21,31 @@ button
 	left: 0
 	z-index: 20
 	transition: top 0.3s ease-in-out
+	background-image: linear-gradient(to right, #1A1127 0%, #102048 100%);
+	box-shadow: 0 4px 12px 1px #424354
 	&.is-down
 		top: 0
 	&.is-up
 		top: -120px
 
 
+//============== VARIABLES ==========
+
+$content-width: 1300px
+
+
 //============== TABS =================
 
 
 .tabs
-  margin: 0
-  padding: 0 15%
+  padding: 0
+  margin: 0 auto
+  max-width: $content-width
   font-size: 1.4em
   display: flex
-  background-image: linear-gradient(to right, #1A1127 0%, #102048 100%);
-  box-shadow: 0 4px 12px 1px #424354
+  @media only screen and (max-width: 400px)
+    li
+      font-size 1.1em
 
 
 .tabs li
@@ -69,13 +78,9 @@ button
     &:after
       width: 40%
 
-  
-
-
 .tabs li.current
   &:after
     width: 100%
-
 
 .tab-icon
   display: inline-block
@@ -89,32 +94,30 @@ button
     background-image: url('rss.svg')
   &--varnish
     background-image: url('varnish.svg')
-  
-
-
-.tab-content__wrap
-  position: relative
 
 .tab-content
-	padding: 8em 15% 1em
-	will-change: transform, opacity
-	transform: translateX(-50%)
-	opacity: 0
-	transition: .3s
-	width: 100%
-	box-sizing: border-box
-	position: absolute
-	top: 0
-	left: 0
-	z-index: -1
-
+  box-sizing: border-box
+  padding: 8em 1em 1em
+  will-change: transform, opacity
+  transition: all .3s ease
+  opacity: 0
+  width: 100%
+  max-width: $content-width
+  box-sizing: border-box
+  position: absolute
+  z-index: -1
+  left: 0
+  transform: translateX(-50%)
+  @media only screen and (max-width: 400px)
+    padding: 7em .5em .5em
 
 .tab-content.current
-  display: block
-  transform: translateX(0)
-  opacity: 1
-  z-index: 2
-
+	display: block
+	opacity: 1
+	z-index: 2
+	margin: 0 auto
+	left: 50%
+	transform: translateX(-50%)
 
 .content__title
   display: flex
@@ -323,15 +326,23 @@ button
       width: calc(100%/3 - 20px)
       margin-bottom: 30px
       overflow: hidden
+      @media only screen and (max-width: 1200px)
+        width: calc(100%/2 - 20px)
+      @media only screen and (max-width: 768px)
+        width: 100%
       &:before
         font-size: 16em
         opacity: .07
+        @media only screen and (max-width: 400px)
+          font-size: 12em
       &:hover
         transform: scale(1.05)
       a
         height: 300px
         background-size: cover
         background-position: center 
+        @media only screen and (max-width: 400px)
+          height: 240px
         &:after
           content: ""
           display: block
@@ -449,4 +460,7 @@ button
   top: 3px
 
 
+
+
+//========== MEDIA QUERIES =======
 
