@@ -2,6 +2,9 @@ body
   font-family: 'Quicksand', sans-serif
   background-color: #eaebed
 
+button
+	outline: none !important
+
 .page-title
   text-align: center
   margin: 0
@@ -93,16 +96,17 @@ body
   position: relative
 
 .tab-content
-  padding: 8em 15% 1em
-  transform: translateX(-50%)
-  opacity: 0
-  transition: .3s
-  width: 100%
-  box-sizing: border-box
-  position: absolute
-  top: 0
-  left: 0
-  z-index: -1
+	padding: 8em 15% 1em
+	will-change: transform, opacity
+	transform: translateX(-50%)
+	opacity: 0
+	transition: .3s
+	width: 100%
+	box-sizing: border-box
+	position: absolute
+	top: 0
+	left: 0
+	z-index: -1
 
 
 .tab-content.current

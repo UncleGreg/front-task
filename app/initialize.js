@@ -64,13 +64,6 @@ $('.js-error').css('display', 'none')
       };
 
 
-		$('#sort').click(function() {
-			var list = $('#js-rss-feeds');
-			var listItems = list.children('li');
-			list.append(listItems.get().reverse());
-      $('#sort').toggleClass('arrow-animate')
-		});
-
     $('#js-grid-view').click(function() {
       $('#js-rss-feeds').toggleClass('grid-view'); 
       $('#js-grid-view').toggleClass('animate');
@@ -112,6 +105,8 @@ $.get('varnish.log', function(data) {
 
   var obj = { };
 
+	//var arr3 = []
+	
   for (var i = 0, j = hosts.length; i < j; i++) {
     if (obj[hosts[i]]) {
       obj[hosts[i]]++;
@@ -121,7 +116,9 @@ $.get('varnish.log', function(data) {
     } 
   }
 
-  let arr = Object.entries(obj);
+ let arr = $.map(obj, function(value, index) {
+    return [[index, value]];
+});
 
   arr.sort(function(a,b){
     return a[1] < b[1] ? 1 : -1;
@@ -141,7 +138,9 @@ $.get('varnish.log', function(data) {
     } 
   }
 
-  let arr2 = Object.entries(obj2);
+ let arr2 = $.map(obj2, function(value, index) {
+    return [[index, value]];
+});
 
   arr2.sort(function(a,b){
     return a[1] < b[1] ? 1 : -1;
@@ -161,17 +160,17 @@ $.get('varnish.log', function(data) {
     $('#js-log-files').append("<li><div class='hostnames-list__data'><div class='hostnames-list__host'><img class='file-icon' src='file.svg' alt='file icon'>" + "  " + arr2[i][0] +"</div><div class='hostnames-list__numbers'><div class='hostnames-list__percent'>" + percent2  + "%</div><div>" + arr2[i][1] +"<span>/</span>" + lines.length + "</div></div></div><div class='percent-bar' style='width:" + barWidth + "'></div></li>")
   }
 
-		$('#sort2').click(function() {
-			var list = $('#js-log-hostnames');
+// sorting buttons
+
+		$('.button-sort').click(function() {
+			var x = $('.x');
+			var button = $('.button-sort').index(this)
+			var list = x.eq(button);
 			var listItems = list.children('li');
 			list.append(listItems.get().reverse());
+      $(this).toggleClass('arrow-animate')
 		});
 
-		$('#sort3').click(function() {
-			var list = $('#js-log-files');
-			var listItems = list.children('li');
-			list.append(listItems.get().reverse());
-		});
 
 
 	var previousScroll = 0;
