@@ -12,14 +12,20 @@ body
   text-transform: uppercase
   background-color: #283257
 
-
+.page-header
+	width: 100%
+	position: fixed
+	left: 0
+	z-index: 20
+	transition: top 0.3s ease-in-out
+	&.is-down
+		top: 0
+	&.is-up
+		top: -120px
 
 
 //============== TABS =================
 
-.container
-  width: 100%
-  min-height: 100vh
 
 .tabs
   margin: 0
@@ -44,7 +50,6 @@ body
   &:before
     content: ""
     display: block
-    
   &:after
     content: ""
     display: block
@@ -57,6 +62,9 @@ body
     transition: .4s
     background-image: radial-gradient(circle 248px at center, #16d9e3 0%, #30c7ec 47%, #46aef7 100%);
     box-shadow: 0 -2px 27px 3px #0d459b
+  &:hover
+    &:after
+      width: 40%
 
   
 
@@ -85,10 +93,10 @@ body
   position: relative
 
 .tab-content
-  padding: 1em 15%
+  padding: 8em 15% 1em
   transform: translateX(-50%)
   opacity: 0
-  transition: .4s
+  transition: .3s
   width: 100%
   box-sizing: border-box
   position: absolute
@@ -109,6 +117,7 @@ body
   flex-direction: column
   div
     display: flex
+    position: relative
   .content__subtitle
     font-size: .7em
     opacity: .3
@@ -158,6 +167,9 @@ body
   display: block
   padding-right: 40px
   cursor: pointer
+  z-index: 10
+  font-size: .7em
+  color: #A2A3A9
   &:after
     content: ""
     background-color: #102047
@@ -170,6 +182,13 @@ body
     border-radius: 2px
     box-shadow: 0 8px 0 0 #102047, 0 16px 0 0 #102047
     transition: .5s
+  &:hover:after
+    height: 10px
+    width: 10px
+    box-shadow: 15px 0 #102047, 0 15px  #102047, 15px 15px #102047
+    right: 15px
+    top: -2px
+  
   &.animate
     &:after
       height: 10px
@@ -177,6 +196,12 @@ body
       box-shadow: 15px 0 #102047, 0 15px  #102047, 15px 15px #102047
       right: 15px
       top: -2px
+    &:hover:after
+      right: 0
+      top: 0
+      height: 3px
+      width: 25px
+      box-shadow: 0 8px 0 0 #102047, 0 16px 0 0 #102047
 
 
 //============ RSS Feed ===========
@@ -253,7 +278,6 @@ body
       opacity: .1
       text-shadow: 0 0 6px rgba(0,0,0,0.4)
       z-index: 2
-
     a
       display: flex
       flex-direction: column

@@ -154,10 +154,11 @@ $.get('varnish.log', function(data) {
   for(var i = 0 ; i < 5 ; i++){
 
     var percent = (arr[i][1]/lines.length * 100).toFixed(1);
+    var percent2 = (arr2[i][1]/lines.length * 100).toFixed(1);
     var barWidth = "calc(100%/100 *"+ percent+ ")";
 
     $('#js-log-hostnames').append("<li><div class='hostnames-list__data'><div class='hostnames-list__host'><img src='http://www.google.com/s2/favicons?domain_url=http%3A%2F%2F" + arr[i][0] + "%2F' alt='favicon'>" + "  " + arr[i][0] +"</div><div class='hostnames-list__numbers'><div class='hostnames-list__percent'>" + percent  + "%</div><div>" + arr[i][1] +"<span>/</span>" + lines.length + "</div></div></div><div class='percent-bar' style='width:" + barWidth + "'></div></li>")
-    $('#js-log-files').append("<li><div class='hostnames-list__data'><div class='hostnames-list__host'><img class='file-icon' src='file.svg' alt='file icon'>" + "  " + arr2[i][0] +"</div><div class='hostnames-list__numbers'><div class='hostnames-list__percent'>" + percent  + "%</div><div>" + arr2[i][1] +"<span>/</span>" + lines.length + "</div></div></div><div class='percent-bar' style='width:" + barWidth + "'></div></li>")
+    $('#js-log-files').append("<li><div class='hostnames-list__data'><div class='hostnames-list__host'><img class='file-icon' src='file.svg' alt='file icon'>" + "  " + arr2[i][0] +"</div><div class='hostnames-list__numbers'><div class='hostnames-list__percent'>" + percent2  + "%</div><div>" + arr2[i][1] +"<span>/</span>" + lines.length + "</div></div></div><div class='percent-bar' style='width:" + barWidth + "'></div></li>")
   }
 
 		$('#sort2').click(function() {
@@ -172,6 +173,32 @@ $.get('varnish.log', function(data) {
 			list.append(listItems.get().reverse());
 		});
 
+
+	var previousScroll = 0;
+
+	$(window).scroll(function(){
+		var currentScroll = $(this).scrollTop();
+		if (currentScroll > 0 && currentScroll < $(document).height() - $(window).height()){
+			if (currentScroll > previousScroll){
+				window.setTimeout(hideNav, 300);
+			} else {
+				window.setTimeout(showNav, 300);
+			}
+			previousScroll = currentScroll;
+		}
+	});
+
+	function hideNav() {
+		$("header").removeClass("is-down").addClass("is-up");
+	}
+	function showNav() {
+		$("header").removeClass("is-up").addClass("is-down");
+	}
+
+
+
 }, 'text');
+
+
 
 

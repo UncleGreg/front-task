@@ -11,12 +11,13 @@
 	<script>require('initialize');</script>
 </head>
 <body>
-	<h1 class="page-title">Programming Task</h1>
-	<div class="container">
+	<header class="page-header is-down">
+		<h1 class="page-title">Programming Task</h1>
 		<ul class="tabs">
 			<li class="tab-link current" data-tab="tab-1"><i class="tab-icon tab-icon--varnish"></i>Varnish log</li>
 			<li class="tab-link" data-tab="tab-2"><i class="tab-icon tab-icon--rss"></i>RSS Feed</li>
 		</ul>
+	</header>
 
 		<div class="tab-content__wrap">
 			<div id="tab-1" class="tab-content current">
@@ -27,16 +28,16 @@
 							<div>
 								<button id="sort2" class="button-sort">Most busy hostnames</button>
 							</div>
-								<span class="content__subtitle">5 out of <span id="js-hostname-count"></span></span>
+							<span class="content__subtitle">5 out of <span id="js-hostname-count"></span></span>
 						</h2>
 						<ul id="js-log-hostnames" class="hostnames-list"></ul>
 					</div>
 					<div class="log-list">
 						<h2 class="content__title">
 							<div>
-							<button id="sort3" class="button-sort">Most requested files</button>
+								<button id="sort3" class="button-sort">Most requested files</button>
 							</div>
-								<span class="content__subtitle">5 out of <span id="js-files-count"></span></span>
+							<span class="content__subtitle">5 out of <span id="js-files-count"></span></span>
 						</h2>
 						<ul id="js-log-files"></ul>
 					</div>
@@ -44,18 +45,17 @@
 			</div>
 			<div id="tab-2" class="tab-content">
 				<p class="js-error">Something went wrong, check if you have javascript enabled on your browser</p>
-				<button id="js-grid-view" class="button-view">Change view:</button>
 				<h2 class="content__title">
 					<div> 
 						<button id="sort" class="button-sort">RSS Feed</button>
+						<button id="js-grid-view" class="button-view animate">Change view:</button>
 					</div>
 					<span id="js-rss-url" class="content__subtitle"></span>
 				</h2>
-				<ul id="js-rss-feeds" class="feed-list">
+				<ul id="js-rss-feeds" class="feed-list grid-view">
 				</ul>
 			</div>
 		</div>
-	</div>
 
 
 </body>
