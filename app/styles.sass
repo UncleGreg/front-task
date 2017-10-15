@@ -12,6 +12,9 @@ body
   text-transform: uppercase
   background-color: #283257
 
+
+
+
 //============== TABS =================
 
 .container
@@ -62,27 +65,117 @@ body
     width: 100%
 
 
-.content__title
-  display: flex
-  justify-content: space-between
-  div
-    display: flex
-    flex-direction: column
-    span
-      font-size: .7em
-      opacity: .3
-      padding-top: 5px
-    
-
-.tab-content
-  display: none
-  padding: 1em 15%
+.tab-icon
+  display: inline-block
+  height: 32px
+  width: 32px
+  position: relative
+  left: -10px
+  top: 6px
+  background-size: contain
+  &--rss
+    background-image: url('rss.svg')
+  &--varnish
+    background-image: url('varnish.svg')
   
 
 
-.tab-content.current
-  display: inherit
+.tab-content__wrap
+  position: relative
 
+.tab-content
+  padding: 1em 15%
+  transform: translateX(-50%)
+  opacity: 0
+  transition: .4s
+  width: 100%
+  box-sizing: border-box
+  position: absolute
+  top: 0
+  left: 0
+  z-index: -1
+
+
+.tab-content.current
+  display: block
+  transform: translateX(0)
+  opacity: 1
+  z-index: 2
+
+
+.content__title
+  display: flex
+  flex-direction: column
+  div
+    display: flex
+  span
+    font-size: .7em
+    opacity: .3
+    padding-top: 5px
+    
+.button-sort
+  border: none
+  cursor: pointer
+  padding: 0
+  background-color: transparent
+  padding-right: 20px
+  position: relative
+  &:after
+    content: ""
+    display: block
+    width: 6px
+    height: 6px
+    border-bottom: 2px solid #666
+    border-left: 2px solid #666
+    position: absolute
+    bottom: 7px
+    right: -3px
+    transform: rotate(-45deg)
+    transition: .4s
+  &:before
+    content: ""
+    height: 16px
+    width: 2px
+    display: block
+    position: absolute
+    right: 0
+    top: 5px
+    background-color: #666
+
+  &.arrow-animate
+    &:after
+      transform: rotate(135deg)
+      bottom: 16px
+
+
+.button-view
+  position: absolute
+  top: 20px
+  right: 20px
+  border: none
+  background-color: transparent
+  display: block
+  padding-right: 40px
+  cursor: pointer
+  &:after
+    content: ""
+    background-color: #102047
+    display: inline-block
+    position: absolute
+    right: 0
+    top: 0
+    height: 3px
+    width: 25px
+    border-radius: 2px
+    box-shadow: 0 8px 0 0 #102047, 0 16px 0 0 #102047
+    transition: .5s
+  &.animate
+    &:after
+      height: 10px
+      width: 10px
+      box-shadow: 15px 0 #102047, 0 15px  #102047, 15px 15px #102047
+      right: 15px
+      top: -2px
 
 
 //============ RSS Feed ===========
@@ -92,6 +185,9 @@ body
 .feed-list
   padding: 0
   counter-reset: counter
+  display: flex
+  flex-direction: column
+  transition: all 1s ease
   &__item
     list-style: none
     margin-bottom: 10px
@@ -144,7 +240,16 @@ body
   &__title
     font-weight: 600
 
-
+  &.grid-view
+    flex-direction: row;
+    flex-wrap: wrap
+    justify-content: space-between
+    .feed-list__item
+      width: calc(100%/3 - 20px)
+      height: 300px
+      margin-bottom: 30px
+      
+  
 //============= LOGS =========
 
 .log
@@ -170,4 +275,5 @@ body
       padding: .8em 1.2em
       color: #222
       text-decoration: none
+
 

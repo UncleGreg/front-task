@@ -60,8 +60,13 @@ $('.js-error').css('display', 'none')
 			var list = $('#js-rss-feeds');
 			var listItems = list.children('li');
 			list.append(listItems.get().reverse());
+      $('#sort').toggleClass('arrow-animate')
 		});
 
+    $('#js-grid-view').click(function() {
+      $('#js-rss-feeds').toggleClass('grid-view'); 
+      $('#js-grid-view').toggleClass('animate');
+    });
     
 	});
 
@@ -133,7 +138,7 @@ $.get('varnish.log', function(data) {
 
 
   for(var i = 0 ; i < 5 ; i++){
-    $('#js-log-hostnames').append("<li>" + "  " + arr[i][0] +"  "+ arr[i][1]  + "</li>")
+    $('#js-log-hostnames').append("<li><img src='http://www.google.com/s2/favicons?domain_url=http%3A%2F%2F" + arr[i][0] + "%2F' alt='favicon'>" + "  " + arr[i][0] +"  "+ arr[i][1]  + "</li>")
     $('#js-log-files').append("<li>" + "  " + arr2[i][0] +"  "+ arr2[i][1]  + "</li>")
   }
 
