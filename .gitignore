@@ -20,9 +20,9 @@ nbproject
 Thumbs.db
 
 # NPM packages folder.
-node_modules/
+node_modules
 
 # Brunch output folder.
-public/
+public
 
 package-lock.json

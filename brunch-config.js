@@ -14,10 +14,5 @@ exports.plugins = {
   sass: {
     mode: "native"
   },
-  postcss: {
-    processors: [
-      require('autoprefixer')(['last 8 versions']),
-      require('csswring')()
-    ]
-  }
+  postcss: {processors: [require('autoprefixer')]}
 };
