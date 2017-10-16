@@ -1,6 +1,7 @@
 body
   font-family: 'Quicksand', sans-serif
   background-color: #eaebed
+  min-width: 320px
 
 button
 	outline: none !important
@@ -44,9 +45,11 @@ $content-width: 1300px
   font-size: 1.4em
   display: flex
   @media only screen and (max-width: 400px)
-    li
-      font-size 1.1em
-
+    font-size: 1.1em
+    .tab-icon
+      height: 22px
+      width: 22px
+      top: 3px
 
 .tabs li
   flex: 1
@@ -129,7 +132,12 @@ $content-width: 1300px
     font-size: .7em
     opacity: .3
     padding-top: 5px
-    
+    @media only screen and (max-width: 768px)
+      font-size: .5em
+      max-width: 300px
+      overflow: hidden
+      text-overflow: ellipsis
+      white-space: nowrap
 .button-sort
   border: none
   cursor: pointer
@@ -209,9 +217,12 @@ $content-width: 1300px
       height: 3px
       width: 25px
       box-shadow: 0 8px 0 0 #102047, 0 16px 0 0 #102047
+  @media only screen and (max-width: 768px)
+    top: 5px
+    right: -10px
+    transform: scale(.8)
 
-
-//============ RSS Feed ===========
+//============ RSS Feed ===========// {{{
 
 .feed-list__date
   color: #444b54
@@ -234,6 +245,11 @@ $content-width: 1300px
     top: -3px
     background-image: url('clock-list.svg')
     background-size: contain
+  @media only screen and (max-width: 768px)
+    color: #fff
+    opacity: .5
+    font-size: .8em
+
 
 .feed-list__title
   font-weight: 600
@@ -249,9 +265,25 @@ $content-width: 1300px
   white-space: nowrap
   border-left: 4px solid transparent
   transition: .2s
+  p
+    margin: 0
+    display: inline-block
+    max-width: 600px
+    text-overflow: ellipsis
+    overflow: hidden
+    white-space: nowrap
+    position: relative
+    top: 4px
+    @media only screen and (max-width: 1000px)
+      max-width: 50%
+    @media only screen and (max-width: 550px)
+      max-width: 100%
+      color: #fff
   span
     color: #444b54
     opacity: .6
+    @media only screen and (max-width: 550px)
+      display: none
   &:hover
     border-color: #101F47
 
@@ -317,6 +349,18 @@ $content-width: 1300px
         opacity: .7
       span
         padding-right: .5em
+      @media only screen and (max-width: 768px)
+        background-size: 200px
+        &:after
+          width: 200px
+        &:before
+          width: 200px
+      @media only screen and (max-width: 550px)
+        background-size: 100%
+        &:after
+          width: 100%
+        &:before
+          width: 100%
 
   &.grid-view
     flex-direction: row;
@@ -364,14 +408,17 @@ $content-width: 1300px
         width: 100%
         height: 80px
         padding: 20px 10px
-        box-sizing: border-box
-        text-overflow: ellipsis
-        overflow: hidden
-        white-space: nowrap
         span
           color: #444b54
           opacity: .6
           display: block
+        p
+          max-width: 100%
+        &:hover
+          border-color: #fff
+        @media only screen and (max-width: 550px)
+          p
+            color: #0E1D4B
 
       .feed-list__date
         color: #fff
@@ -395,6 +442,7 @@ $content-width: 1300px
           top: -3px
           background-image: url('clock-list.svg')
           background-size: contain
+// }}}
 
 //============= LOGS =========
 
@@ -404,7 +452,7 @@ $content-width: 1300px
     flex-direction: column
   &-list
     flex: 1
-    margin: 10px
+    margin: 0
     ul
       padding: 0
     li
@@ -427,6 +475,9 @@ $content-width: 1300px
     font-size: 1.3em
     font-weight: 600
     color: #2E3048
+    white-space: nowrap
+    overflow: hidden
+    overflow-x: scroll
   &__data
     display: flex
     justify-content: space-between
@@ -438,7 +489,7 @@ $content-width: 1300px
     text-align: center
     font-weight: 700
     color: #444b54
-    width: 130px
+    width: 150px
     span
       padding: 0 5px
       font-weight: 700
@@ -452,12 +503,38 @@ $content-width: 1300px
       display: block
       height: 2px
       transition: 2s
-
+  @media only screen and (max-width: 768px)
+    &__host
+      font-size: .9em
+      img
+        position: relative
+        top: 2px
+  @media only screen and (max-width: 550px)
+    &__data
+      text-align: center
+      flex-direction: column-reverse
+    &__percent
+      font-size: 2em
+    &__numbers
+      width: 100%
+      padding: 10px 
+      box-sizing: border-box
+      border-bottom: 2px dashed rgba(0,0,0,0.1)
+    li
+      padding: 0
+    &__host
+      line-height: 60px
+      height: 60px
+      overflow: hidden
+      overflow-x: scroll
 
 .file-icon
   height: 24px
   position: relative
   top: 3px
+  @media only screen and (max-width: 550px)
+    height: 18px
+    top: 0
 
 
 

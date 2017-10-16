@@ -60,7 +60,7 @@ $('.js-error').css('display', 'none')
     });
     
       for(var i = 0 ; i < rssFeed.length ; i++){
-        $( "#js-rss-feeds" ).append("<li class='feed-list__item'><a href='" + rssFeed[i].link + "' target='_blank' style='background-image: url(" + rssFeed[i].image + ")'><div class='feed-list__title'><span>Title:</span>" + rssFeed[i].title + "</div>"  + "<div class='feed-list__date'>" + rssFeed[i].pubDate + "</div></a></li>");
+        $( "#js-rss-feeds" ).append("<li class='feed-list__item'><a href='" + rssFeed[i].link + "' target='_blank' style='background-image: url(" + rssFeed[i].image + ")'><div class='feed-list__title'><span>Title:</span>" + "<p>" + rssFeed[i].title + "</p></div>"  + "<div class='feed-list__date'>" + rssFeed[i].pubDate + "</div></a></li>");
       };
 
 
@@ -156,8 +156,8 @@ $.get('varnish.log', function(data) {
     var percent2 = (arr2[i][1]/lines.length * 100).toFixed(1);
     var barWidth = "calc(100%/100 *"+ percent+ ")";
 
-    $('#js-log-hostnames').append("<li><div class='hostnames-list__data'><div class='hostnames-list__host'><img src='http://www.google.com/s2/favicons?domain_url=http%3A%2F%2F" + arr[i][0] + "%2F' alt='favicon'>" + "  " + arr[i][0] +"</div><div class='hostnames-list__numbers'><div class='hostnames-list__percent'>" + percent  + "%</div><div>" + arr[i][1] +"<span>/</span>" + lines.length + "</div></div></div><div class='percent-bar' style='width:" + barWidth + "'></div></li>")
-    $('#js-log-files').append("<li><div class='hostnames-list__data'><div class='hostnames-list__host'><img class='file-icon' src='file.svg' alt='file icon'>" + "  " + arr2[i][0] +"</div><div class='hostnames-list__numbers'><div class='hostnames-list__percent'>" + percent2  + "%</div><div>" + arr2[i][1] +"<span>/</span>" + lines.length + "</div></div></div><div class='percent-bar' style='width:" + barWidth + "'></div></li>")
+    $('#js-log-hostnames').append("<li><div class='hostnames-list__data'><div class='hostnames-list__host'><img src='http://www.google.com/s2/favicons?domain_url=http%3A%2F%2F" + arr[i][0] + "%2F' alt='favicon'>" + "  " + arr[i][0] +"</div><div class='hostnames-list__numbers'><div class='hostnames-list__percent'>" + percent  + "%</div><div> <span>" + arr[i][1] +" / " + lines.length + " requests</span></div></div></div><div class='percent-bar' style='width:" + barWidth + "'></div></li>")
+    $('#js-log-files').append("<li><div class='hostnames-list__data'><div class='hostnames-list__host'><img class='file-icon' src='file.svg' alt='file icon'>" + "  " + arr2[i][0] +"</div><div class='hostnames-list__numbers'><div class='hostnames-list__percent'>" + percent2  + "%</div><div><span>" + arr2[i][1] +" / " + lines.length + " requests</span></div></div></div><div class='percent-bar' style='width:" + barWidth + "'></div></li>")
   }
 
 // sorting buttons
