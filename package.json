@@ -1,28 +1,33 @@
 {
-  "name": "front-task",
-  "description": "task",
+  "name": "brunch-on-speed",
+  "description": "Skeleton for Brunch",
   "private": true,
-  "author": "GW",
-  "version": "0.0.1",
+  "author": "jfilter",
+  "version": "0.1.0",
   "repository": "",
   "scripts": {
-    "start": "brunch watch --server",
+    "start": "LOGGY_STACKS=true brunch watch --server",
     "build": "brunch build --production"
   },
   "dependencies": {
-    "jquery": "^3.2.1"
+    "bootstrap": "^3",
+    "jquery": "^3"
   },
   "devDependencies": {
     "auto-reload-brunch": "^2",
-    "autoprefixer": "^7.1.5",
-    "babel-brunch": "~6.0",
+    "babel-brunch": "^6",
     "babel-preset-latest": "^6",
-    "brunch": "^2.10.11",
-    "clean-css-brunch": "^2",
-    "csswring": "^6.0.1",
-    "javascript-brunch": "^2.10.0",
-    "postcss-brunch": "^2.1.0",
-    "sass-brunch": "^2.10.4",
+    "babel-preset-stage-0": "^6",
+    "brunch": "^2",
+    "copycat-brunch": "^1",
+    "eslint": "^3",
+    "eslint-config-airbnb-base": "^11",
+    "eslint-config-prettier": "^2",
+    "eslint-plugin-import": "^2",
+    "eslint-plugin-prettier": "^2",
+    "pleeease-brunch": "^3",
+    "prettier": "^1",
+    "sass-brunch": "^2",
     "uglify-js-brunch": "^2"
   }
 }

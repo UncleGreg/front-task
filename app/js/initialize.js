@@ -1,10 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
-
-
 var $ = require('jquery');
 
-$(document).ready(function(){
-
+const fileName = "varnish.log"
 
 // display when js is off
 $('.js-error').css('display', 'none')
@@ -38,9 +35,6 @@ $('.js-error').css('display', 'none')
 					imgRegular: $this.find("imgRegular").text(),
 					image: $this.find("image").text(),
 				}
-      if(item.imgRegular == ""){
-        item.imgRegular = "default-img.gif";
-      }
 
 			var date = item.pubDate;
 			var dateParts = date.split('+');
@@ -190,14 +184,4 @@ $.get('varnish.log', function(data) {
 	function showNav() {
 		$("header").removeClass("is-up").addClass("is-down");
 	}
-
-
-
-}, 'text');
-
-
-
-
-  // do your setup here
-  console.log('Initialized app');
 });

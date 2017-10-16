@@ -1,18 +1,35 @@
-// See http://brunch.io for documentation.
 exports.files = {
   javascripts: {
     joinTo: {
-      'vendor.js': /^(?!app)/, // Files that are not in `app` dir.
-      'app.js': /^app/
-    }
+      'js/app.js': /^(app)/,
+      'js/vendor.js': /^node_modules/,
+    },
   },
-  stylesheets: {joinTo: 'app.css'}
+  stylesheets: { joinTo: 'css/app.css' },
 };
 
 exports.plugins = {
-  babel: {presets: ['latest']},
-  sass: {
-    mode: "native"
+  babel: { presets: ['latest', 'stage-0'] },
+  pleeease: {
+    sass: true,
+    autoprefixer: {
+      browsers: ['> 1%'],
+    },
   },
-  postcss: {processors: [require('autoprefixer')]}
+  copycat: {
+    onlyChanged: true,
+  },
+};
+
+exports.modules = {
+  autoRequire: {
+    'js/app.js': ['js/initialize'],
+  },
+};
+
+exports.npm = {
+  globals: {
+    jQuery: 'jquery',
+    $: 'jquery',
+  },
 };
